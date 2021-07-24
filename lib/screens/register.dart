@@ -4,7 +4,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fusefern/main.dart';
 import 'package:fusefern/utility/my_style.dart';
 import 'package:fusefern/utility/normal_dialog.dart';
+
 import 'package:http/http.dart' as http;
+
+import 'home.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -45,9 +48,10 @@ class _RegisterState extends State<Register> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 16.0);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     }
   }
 

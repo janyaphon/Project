@@ -1,8 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:fusefern/screens/welcome.dart';
+import 'package:fusefern/screens/navi.dart';
 import 'package:fusefern/utility/my_style.dart';
 import 'package:fusefern/utility/normal_dialog.dart';
 import 'package:http/http.dart' as http;
@@ -32,14 +31,13 @@ class _LoginState extends State<Login> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 16.0);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Welcome()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Navi()));
     } else {
       Fluttertoast.showToast(
-          msg: "Username & Password Incorrect!S",
+          msg: "Username & Password Incorrect",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,

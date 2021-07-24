@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fusefern/screens/manage.dart';
+import 'package:fusefern/screens/search.dart';
+import 'package:fusefern/screens/status.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -17,9 +20,6 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('WELCOME'),
-      ),
       body: Container(
         child: Center(
           child: SingleChildScrollView(
