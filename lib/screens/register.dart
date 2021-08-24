@@ -24,7 +24,7 @@ class _RegisterState extends State<Register> {
   TextEditingController conpass = TextEditingController();
 
   Future register() async {
-    var url = Uri.parse("http://192.168.42.204/LoginRegister/register.php");
+    var url = Uri.parse("http://192.168.101.76/ProjectApp/register.php");
     var response = await http.post(url, body: {
       'name': fullname.text,
       'username': username.text,
@@ -68,6 +68,7 @@ class _RegisterState extends State<Register> {
           children: <Widget>[
             myLogo(),
             showAppName(),
+            showAppName2(),
             MyStyle().mySizebox(),
             fullnameForm(),
             MyStyle().mySizebox(),
@@ -258,6 +259,9 @@ class _RegisterState extends State<Register> {
                   if (value.isEmpty) {
                     return 'Enter Confirm Password';
                   }
+                  if (!(value == password.text)) {
+                    return ' Your Password does not match';
+                  }
                   return null;
                 },
                 // onChanged: (value) => conpass = value.trim(),
@@ -283,6 +287,16 @@ class _RegisterState extends State<Register> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         MyStyle().showTiitle('FCEA'),
+        // MyStyle().showTiitle2('Find construction equipment application'),
+      ],
+    );
+  }
+
+  Row showAppName2() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        MyStyle().showTiitle2('Find construction equipment application'),
       ],
     );
   }

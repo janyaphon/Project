@@ -1,26 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:fusefern/model/equipmentmodel.dart';
+import 'package:fusefern/services/equipmentservice.dart';
 
 class Status extends StatefulWidget {
+  // const Status({Key? key}) : super(key: key);
+
   @override
   _StatusState createState() => _StatusState();
-
-//     Future status() async {
-//     var url = Uri.parse("http://192.168.42.204/LoginRegister/login.php");
-//     var response = await http.post(url, body: {
-//       '    ':     .text,
-//       '    ':     .text,
-//     });
-
-//     var data = json.decode(response.body);
-//
 }
 
 class _StatusState extends State<Status> {
+  bool loading = true;
+  List<Equipmentmodel> equipmentList = [];
+
+  getAllEquipment() async {
+    equipmentList = await Equipmentservice().getEquipment();
+    setState(() {
+      loading = false;
+    });
+    print(equipmentList.length.toString());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getAllEquipment();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(),
+      appBar: AppBar(
+        title: Text("Status"),
+      ),
+      body: loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              itemCount: equipmentList.length,
+              itemBuilder: (context, index) {
+                Equipmentmodel view = equipmentList[index];
+                return showEquipment(view);
+              },
+            ),
+    );
+  }
+
+  Widget showEquipment(Equipmentmodel view) {
+    return ListTile(
+      title: Text(view.equipmentName),
+      subtitle: Text(view.equipmentStatus.toString()),
     );
   }
 }

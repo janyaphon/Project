@@ -5,6 +5,7 @@ import 'package:fusefern/screens/navi.dart';
 import 'package:fusefern/utility/my_style.dart';
 import 'package:fusefern/utility/normal_dialog.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -12,20 +13,28 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   final formKey = GlobalKey<FormState>();
   // String username, password;
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
   Future login() async {
-    var url = Uri.parse("http://192.168.42.204/LoginRegister/login.php");
+    var url = Uri.parse("http://192.168.101.76/ProjectApp/login.php");
     var response = await http.post(url, body: {
       'username': username.text,
       'password': password.text,
     });
+    print(response.body);
 
     var data = json.decode(response.body);
-    if (data == "Success") {
+    print(data['flag']);
+    if (data['flag'] == "Success") {
+      //shared_preferences ใช้แพจเก็จ ในการเก็บค่า
+      final SharedPreferences prefs = await _prefs;
+      prefs.setString("user_id", data["uid"]);
+      prefs.setString("name", data["name"]);
       Fluttertoast.showToast(
           msg: "Login Successful",
           toastLength: Toast.LENGTH_SHORT,
@@ -62,6 +71,9 @@ class _LoginState extends State<Login> {
               children: <Widget>[
                 MyStyle().showLogo(),
                 MyStyle().showTiitle('FCEA'),
+                MyStyle()
+                    .showTiitle2('Find construction equipment application'),
+                MyStyle().mySizebox(),
                 MyStyle().mySizebox(),
                 usernameForm(),
                 MyStyle().mySizebox(),

@@ -40,7 +40,7 @@ class _NaviState extends State<Navi> {
   BottomNavigationBarItem showManageNav() {
     return BottomNavigationBarItem(
       icon: Icon(Icons.settings),
-      title: Text("จัดการ"),
+      title: Text("ตั้งค่า"),
       backgroundColor: Colors.blue,
     );
   }
@@ -48,7 +48,6 @@ class _NaviState extends State<Navi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: listWidgets[indexPage],
       bottomNavigationBar: showBottonNavigationBar(),
     );

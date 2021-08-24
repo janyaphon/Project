@@ -8,6 +8,11 @@ class Manage extends StatefulWidget {
 class _ManageState extends State<Manage> {
   @override
   Widget build(BuildContext context) {
-    return Text('This is Manage');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Setting"),
+      ),
+      body: Container(),
+    );
   }
 }

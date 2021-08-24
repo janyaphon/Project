@@ -16,10 +16,25 @@ class MyStyle {
             color: Colors.blue.shade900,
             fontWeight: FontWeight.bold),
       );
+  Text showTiitle2(String title) => Text(
+        title,
+        style: TextStyle(
+            height: 1.5,
+            fontSize: 15,
+            color: Colors.blue.shade900,
+            fontWeight: FontWeight.bold),
+      );
 
   Container showLogo() {
     return Container(
       width: 120.0,
+      child: Image.asset('img/logo.png'),
+    );
+  }
+
+  Container showLogo2() {
+    return Container(
+      width: 60.0,
       child: Image.asset('img/logo.png'),
     );
   }
