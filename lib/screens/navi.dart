@@ -10,7 +10,7 @@ class Navi extends StatefulWidget {
 }
 
 class _NaviState extends State<Navi> {
-  List<Widget> listWidgets = [Welcome(), Search(), Status(), Manage()];
+  List<Widget> listWidgets = [Welcome(), Search(), Status(), Setting()];
   int indexPage = 0;
 
   BottomNavigationBarItem showWelcomNav() {
@@ -69,3 +69,5 @@ class _NaviState extends State<Navi> {
         ],
       );
 }
+
+class Manage {}

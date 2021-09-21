@@ -134,28 +134,37 @@ class _WelcomeState extends State<Welcome> {
                               children: [
                                 Row(children: [
                                   MyStyle().showLogo2(),
-                                  Row(
+                                  Column(
                                     children: [
-                                      Text("    "),
-                                      Text("ID : ",
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.blue.shade900,
-                                              fontWeight: FontWeight.bold)),
-                                      Text(
-                                        uid.toString(),
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.blue.shade900,
-                                            fontWeight: FontWeight.bold),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text("ID : ",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.blue.shade900,
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(
+                                            uid.toString(),
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.blue.shade900,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
                                       ),
-                                      Text("   "),
-                                      Text(
-                                        name.toString(),
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.blue.shade900,
-                                            fontWeight: FontWeight.bold),
+                                      Row(
+                                        children: [
+                                          Text("   "),
+                                          Text(
+                                            name.toString(),
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.blue.shade900,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),

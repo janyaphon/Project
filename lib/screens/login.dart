@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
   TextEditingController password = TextEditingController();
 
   Future login() async {
-    var url = Uri.parse("http://192.168.101.76/ProjectApp/login.php");
+    var url = Uri.parse("http://192.168.118.76/ProjectApp/login.php");
     var response = await http.post(url, body: {
       'username': username.text,
       'password': password.text,

@@ -22,14 +22,20 @@ class _RegisterState extends State<Register> {
   TextEditingController tel = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController conpass = TextEditingController();
+  TextEditingController teltwo = TextEditingController();
+  TextEditingController department = TextEditingController();
+  TextEditingController email = TextEditingController();
 
   Future register() async {
-    var url = Uri.parse("http://192.168.101.76/ProjectApp/register.php");
+    var url = Uri.parse("http://192.168.118.76/ProjectApp/register.php");
     var response = await http.post(url, body: {
       'name': fullname.text,
       'username': username.text,
       'tel': tel.text,
       'password': password.text,
+      'teltwo': teltwo.text,
+      'department': department.text,
+      'email': email.text,
     });
 
     var data = json.decode(response.body);
@@ -75,6 +81,12 @@ class _RegisterState extends State<Register> {
             usernameForm(),
             MyStyle().mySizebox(),
             telForm(),
+            MyStyle().mySizebox(),
+            tel2Form(),
+            MyStyle().mySizebox(),
+            emailForm(),
+            MyStyle().mySizebox(),
+            departmentForm(),
             MyStyle().mySizebox(),
             passwordForm(),
             MyStyle().mySizebox(),
@@ -143,7 +155,7 @@ class _RegisterState extends State<Register> {
                 // onChanged: (value) => fullname = value.trim(),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
-                    Icons.account_box,
+                    Icons.person_sharp,
                     color: MyStyle().darkColor,
                   ),
                   labelStyle: TextStyle(color: MyStyle().darkColor),
@@ -173,7 +185,7 @@ class _RegisterState extends State<Register> {
                 // onChanged: (value) => username = value.trim(),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
-                    Icons.account_box,
+                    Icons.account_circle,
                     color: MyStyle().darkColor,
                   ),
                   labelStyle: TextStyle(color: MyStyle().darkColor),
@@ -203,7 +215,7 @@ class _RegisterState extends State<Register> {
                 // onChanged: (value) => tel = value.trim(),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
-                    Icons.account_box,
+                    Icons.phone,
                     color: MyStyle().darkColor,
                   ),
                   labelStyle: TextStyle(color: MyStyle().darkColor),
@@ -234,7 +246,7 @@ class _RegisterState extends State<Register> {
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(
-                    Icons.account_box,
+                    Icons.vpn_key_rounded,
                     color: MyStyle().darkColor,
                   ),
                   labelStyle: TextStyle(color: MyStyle().darkColor),
@@ -268,11 +280,93 @@ class _RegisterState extends State<Register> {
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(
-                    Icons.account_box,
+                    Icons.vpn_key_rounded,
                     color: MyStyle().darkColor,
                   ),
                   labelStyle: TextStyle(color: MyStyle().darkColor),
                   labelText: 'Confirm password',
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: MyStyle().darkColor)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: MyStyle().darkColor)),
+                )),
+          ),
+        ],
+      );
+  Widget tel2Form() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            width: 280.0,
+            child: TextFormField(
+                controller: teltwo,
+
+                // onChanged: (value) => tel = value.trim(),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: MyStyle().darkColor,
+                  ),
+                  labelStyle: TextStyle(color: MyStyle().darkColor),
+                  labelText: 'Tel 2 ',
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: MyStyle().darkColor)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: MyStyle().darkColor)),
+                )),
+          ),
+        ],
+      );
+  Widget departmentForm() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            width: 280.0,
+            child: TextFormField(
+                controller: department,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Enter Department';
+                  }
+                  return null;
+                },
+                // onChanged: (value) => tel = value.trim(),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: MyStyle().darkColor,
+                  ),
+                  labelStyle: TextStyle(color: MyStyle().darkColor),
+                  labelText: 'Department',
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: MyStyle().darkColor)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: MyStyle().darkColor)),
+                )),
+          ),
+        ],
+      );
+  Widget emailForm() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            width: 280.0,
+            child: TextFormField(
+                controller: email,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Enter E-mail';
+                  }
+                  return null;
+                },
+                // onChanged: (value) => tel = value.trim(),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: MyStyle().darkColor,
+                  ),
+                  labelStyle: TextStyle(color: MyStyle().darkColor),
+                  labelText: 'E-mail',
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: MyStyle().darkColor)),
                   focusedBorder: OutlineInputBorder(

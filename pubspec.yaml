@@ -35,6 +35,9 @@ dependencies:
   flutter_automation: ^2.0.0
   qrscan: ^0.3.2
   shared_preferences: ^2.0.6
+  toast: ^0.1.5
+  flutter_blue: ^0.8.0
+  flutter_beacon: ^0.5.1
 
 dev_dependencies:
   flutter_test:

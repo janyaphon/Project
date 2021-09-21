@@ -49,7 +49,10 @@ class _StatusState extends State<Status> {
 
   Widget showEquipment(Equipmentmodel view) {
     return ListTile(
-      title: Text(view.equipmentName),
+      title: Text(view.equipmentName,
+          style: TextStyle(
+            color: Colors.blue.shade900,
+          )),
       subtitle: Text(view.equipmentStatus.toString()),
     );
   }

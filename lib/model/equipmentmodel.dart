@@ -12,18 +12,21 @@ class Equipmentmodel {
     this.equipmentName,
     this.equipmentStatus,
     this.equipmentInfo,
+    this.equipmentbeacon,
   });
 
   String equipmentId;
   String equipmentName;
   String equipmentStatus;
   String equipmentInfo;
+  String equipmentbeacon;
 
   factory Equipmentmodel.fromJson(Map<String, dynamic> json) => Equipmentmodel(
         equipmentId: json["Equipment_ID"],
         equipmentName: json["Equipment_name"],
         equipmentStatus: json["Equipment_Status"],
         equipmentInfo: json["Equipment_info"],
+        equipmentbeacon: json["Beacon_code"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -31,5 +34,6 @@ class Equipmentmodel {
         "Equipment_name": equipmentName,
         "Equipment_Status": equipmentStatus,
         "Equipment_info": equipmentInfo,
+        "Beacon_code": equipmentbeacon,
       };
 }
